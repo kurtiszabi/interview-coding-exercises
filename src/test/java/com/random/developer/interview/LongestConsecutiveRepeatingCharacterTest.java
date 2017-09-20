@@ -50,7 +50,7 @@ public class LongestConsecutiveRepeatingCharacterTest
 	}
 	
 	@ParameterizedTest
-	@ValueSource(strings = { "AAbAc", "bAAcA"})
+	@ValueSource(strings = { "AAAbbAc", "bAAAccA"})
 	public void testLongestConsecutiveCharRepeating(String input) {
 		assertEquals('A', classUnderTest.apply(input));
 	}
