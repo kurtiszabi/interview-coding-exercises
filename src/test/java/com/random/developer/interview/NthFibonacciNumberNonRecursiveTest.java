@@ -1,19 +1,17 @@
 package com.random.developer.interview;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static java.time.Duration.ofSeconds;
-
 import com.random.developer.interview.test.AbstractUnitTestBase;
 
-public class NthFibonacciNumberTest extends AbstractUnitTestBase<NthFibonacciNumber> {
-
+public class NthFibonacciNumberNonRecursiveTest extends AbstractUnitTestBase<NthFibonacciNumberNonRecursive> {
+	
 	@Test
 	public void testThatInputLessThanZeroIsNotAccepted() {
 		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -29,10 +27,9 @@ public class NthFibonacciNumberTest extends AbstractUnitTestBase<NthFibonacciNum
 	}
 	
 	@Test
-	public void testThatItResondsInATimelyManner() {
-		assertTimeoutPreemptively(ofSeconds(1), () -> {
-			classUnderTest.apply(1_000);
-		});
+	public void testThatWorksForLargeN() {
+		int n = 1_000_000;
+		assertTrue(() -> classUnderTest.apply(n) > n);		
 	}
 	
 }
