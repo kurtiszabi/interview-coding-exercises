@@ -23,7 +23,7 @@ public class PreOrderTraversalTest extends AbstractUnitTestBase<PreOrderTraversa
 		//    (B)    (G)
 		//    / \      \ 
 		//  (A) (D)    (I)
-		//	    / \    /
+		//      / \    /
 		//    (C) (E)(H)
 		//
 		BinaryNode<String> c = new BinaryNode<>("C");
