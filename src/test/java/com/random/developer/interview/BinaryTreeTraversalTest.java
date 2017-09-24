@@ -10,7 +10,7 @@ import com.random.developer.interview.fixtures.BinaryNode;
 import com.random.developer.interview.test.AbstractUnitTestBase;
 import com.random.developer.interview.test.StringCollector;
 
-public class PreOrderTraversalTest extends AbstractUnitTestBase<PreOrderTraversal> {
+public class BinaryTreeTraversalTest extends AbstractUnitTestBase<BinaryTreeTraversal> {
 
 	private BinaryNode<String> root;
 	
@@ -39,9 +39,21 @@ public class PreOrderTraversalTest extends AbstractUnitTestBase<PreOrderTraversa
 	}
 	
 	@Test
-	public void visit_binaryTree_nodesAreVisitedPreOrder() {
-		classUnderTest.visit(root, collector);
+	public void preOrder_binaryTree_nodesAreVisitedPreOrder() {
+		classUnderTest.preOrder(root, collector);
 		assertThat(collector.get(), contains("F", "B", "A", "D", "C", "E", "G", "I", "H"));
+	}
+	
+	@Test
+	public void inOrder_binaryTree_nodesAreVisitedInOrder() {
+		classUnderTest.inOrder(root, collector);
+		assertThat(collector.get(), contains("A", "B", "C", "D", "E", "F", "G", "H", "I"));
+	}
+	
+	@Test
+	public void postOrder_binaryTree_nodesAreVisitedPostOrder() {
+		classUnderTest.postOrder(root, collector);
+		assertThat(collector.get(), contains("A", "C", "E", "D", "B", "H", "I", "G", "F"));
 	}
 	
 }
