@@ -35,6 +35,35 @@ public class BinaryTreeTraversalNonRecursive {
 			}
 		}
 		return list;
+	}
+
+	public <T> List<BinaryNode<T>> preOrder(BinaryNode<T> root) {
+		Stack<BinaryNode<T>> stack = new Stack<>();
+		List<BinaryNode<T>> list = new LinkedList<>();
+		BinaryNode<T> node = root;
+
+		// find the leftmost
+		while(node != null) {
+			list.add(node);
+			stack.add(node);
+			node = node.getLeftChild();
+		}
+		
+		// traverse the tree
+		while(!stack.isEmpty()) {
+			node = stack.pop();
+			// visit the right child
+			if (node.getRightChild() != null) {
+				node = node.getRightChild();
+				// find the leftmost item in the subtree on collect nodes on the go
+				while(node!= null) {
+					list.add(node);
+					stack.add(node);
+					node = node.getLeftChild();
+				}
+			}
+		}
+		return list;
 	} 
 	
 }

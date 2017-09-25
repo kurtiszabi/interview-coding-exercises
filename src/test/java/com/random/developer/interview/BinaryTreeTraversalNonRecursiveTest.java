@@ -49,6 +49,18 @@ public class BinaryTreeTraversalNonRecursiveTest extends AbstractUnitTestBase<Bi
 		}
 		return prev;
 	}
+	
+	@Test
+	public void preOrder_binaryTree_valuesAreFetchedPreOrder() {
+		List<BinaryNode<String>> preOrder = classUnderTest.preOrder(root);
+		assertThat(preOrder.stream().map(BinaryNode::getValue).collect(toList()), contains("F", "B", "A", "D", "C", "E", "G", "I", "H"));
+	}
+	
+	@Test
+	public void preOrder_bigLinearTree_noStackOverflow() {
+		List<BinaryNode<String>> preOrder = classUnderTest.preOrder(bigRoot);
+		assertThat(preOrder, hasSize(BIG_TREE_SZ));
+	}
 
 	@Test
 	public void inOrder_binaryTree_valuesAreFetchedInOrder() {
@@ -61,6 +73,4 @@ public class BinaryTreeTraversalNonRecursiveTest extends AbstractUnitTestBase<Bi
 		List<BinaryNode<String>> inOrder = classUnderTest.inOrder(bigRoot);
 		assertThat(inOrder, hasSize(BIG_TREE_SZ));
 	}
-	
-	
 }
